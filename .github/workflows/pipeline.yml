@@ -7,5 +7,5 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-      - run: ls -l && mvn compile
+      - run: cd .. && ls -l && mvn compile
 
