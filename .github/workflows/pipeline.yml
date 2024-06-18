@@ -1,1 +1,11 @@
+env:
+  maven_package_cache: ".m2/repository"
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: self-hosted
+    steps:
+      - run: mvn compile
 
