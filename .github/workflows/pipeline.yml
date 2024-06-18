@@ -7,5 +7,6 @@ jobs:
   build:
     runs-on: self-hosted
     steps:
-      - run: cd .. && ls -l && mvn compile
+      - uses: actions/checkout@main
+      - run: ls -l && mvn compile
 
