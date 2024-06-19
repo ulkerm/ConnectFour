@@ -79,3 +79,15 @@ jobs:
         with:
           name: build-artifacts
           path: target/*.war
+
+  deploy_test:
+    name: deploy_test
+    runs-on: [ self-hosted ]
+    needs: [ package ]
+    if: github.event_name == 'workflow_dispatch'
+    steps:
+      - run: docker rm --force tomcat
+            docker image rm --force connect-four
+            docker build -t connect-four .
+            docker run -d --rm --name tomcat -p 8080:8080 connect-four
+
