@@ -6,9 +6,10 @@ on: [push]
 jobs:
   build:
     runs-on: [self-hosted, linux]
+    with:
+      path: target/*
     steps:
       - uses: actions/checkout@main
       - run: ls -l && mvn compile
-        with:
-          path: target/*
+
 
