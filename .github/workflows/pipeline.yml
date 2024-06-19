@@ -11,6 +11,6 @@ jobs:
         with:
           name: artifacts
           path: target/*
-      - run: ls -l && mvn compile
+      - run: echo $JAVA_HOME && mvn compile
 
 
