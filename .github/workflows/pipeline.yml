@@ -5,8 +5,8 @@ on: [push]
 
 jobs:
   build:
-    runs-on: self-hosted
+    runs-on: [self-hosted, linux]
     steps:
       - uses: actions/checkout@main
-      - run: ls -l && mvn compile
+        run: ls -l && mvn compile
 
