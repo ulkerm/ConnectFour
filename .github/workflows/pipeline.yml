@@ -84,7 +84,6 @@ jobs:
     name: deploy_test
     runs-on: [ self-hosted ]
     needs: [ package ]
-    if: github.event_name == 'workflow_dispatch'
     steps:
       - run: docker rm --force tomcat
             docker image rm --force connect-four
