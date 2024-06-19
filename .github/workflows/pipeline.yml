@@ -28,3 +28,23 @@ jobs:
         with:
           name: build-artifacts
           path: target/*
+
+  test:
+    name: test
+    runs-on: [ self-hosted ]
+    needs: [build]
+    steps:
+      - uses: actions/cache@v3
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
+
+      - run: mvn test
+      - name: Save build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: build-artifacts
+          path: target/surefire-reports/*
+                target/site/jacoco/*
