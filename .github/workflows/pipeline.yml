@@ -6,10 +6,11 @@ on: [push]
 jobs:
   build:
     runs-on: [self-hosted, linux]
-    with:
-      path: target/*
     steps:
       - uses: actions/checkout@main
+        with:
+          name: artifacts
+          path: target/*
       - run: ls -l && mvn compile
 
 
