@@ -8,5 +8,7 @@ jobs:
     runs-on: [self-hosted, linux]
     steps:
       - uses: actions/checkout@main
-        run: ls -l && mvn compile
+      - run: ls -l && mvn compile
+        with:
+          path: target/*
 
