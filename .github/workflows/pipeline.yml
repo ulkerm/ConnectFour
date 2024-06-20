@@ -1,7 +1,11 @@
 env:
   maven_package_cache: ".m2/repository"
 
-on: [push]
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
 
 jobs:
   build:
