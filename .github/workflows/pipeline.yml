@@ -55,6 +55,7 @@ jobs:
           path: target/surefire-reports/*
                 target/site/jacoco/*
 
+
   package:
     name: package
     runs-on: [ self-hosted ]
@@ -84,9 +85,6 @@ jobs:
     name: deploy_test
     runs-on: [ self-hosted ]
     needs: [ package ]
+    if: ${{ github.ref_name == 'dev' && github.event_name == 'workflow_dispatch' }}
     steps:
-      - run: docker rm --force tomcat
-            docker image rm --force connect-four
-            docker build -t connect-four .
-            docker run -d --rm --name tomcat -p 8080:8080 connect-four
-
+      - run: echo "hello"
