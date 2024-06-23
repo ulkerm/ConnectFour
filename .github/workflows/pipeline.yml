@@ -89,6 +89,6 @@ jobs:
     name: deploy_test
     runs-on: [ self-hosted ]
     needs: [ package ]
-    if: ${{ github.ref_name == 'dev' && github.event_name == 'workflow_dispatch' }}
+    if: ${{ github.event_name == 'workflow_dispatch' }}
     steps:
       - run: echo "hello"
