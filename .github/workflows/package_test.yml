@@ -32,4 +32,4 @@ jobs:
         uses: actions/download-artifact@v3
         with:
           name: build-artifacts
-      - run: ls -l
+      - run: mv -f ConnectFour.war /usr/local/tomcat/webapps/
