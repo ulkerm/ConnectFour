@@ -1,0 +1,14 @@
+env:
+  maven_package_cache: ".m2/repository"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy_test:
+    name: deploy_test
+    runs-on: [ self-hosted ]
+    if: ${{ github.event_name == 'workflow_dispatch' }}
+    steps:
+      - uses: actions/checkout@v2
+      - run: ls -l
