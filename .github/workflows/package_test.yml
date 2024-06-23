@@ -5,10 +5,27 @@ on:
   workflow_dispatch:
 
 jobs:
-  deploy_test:
+  create_package:
     name: deploy_test
     runs-on: [ self-hosted ]
     if: ${{ github.event_name == 'workflow_dispatch' }}
     steps:
       - uses: actions/checkout@v2
+      - run: mvn package
+      - name: Save build artifacts
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-artifacts
+          path: target/*.war
+
+  test_package:
+    name: deploy_test
+    runs-on: [ self-hosted ]
+    needs: [create_package]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Download build artifacts
+        uses: actions/download-artifact@v2
+        with:
+          name: build-artifacts
       - run: ls -l
